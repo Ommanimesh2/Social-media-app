@@ -4,6 +4,7 @@ import { useState } from "react";
 import { getData } from '../../api/axios';
 import { useNavigate } from 'react-router-dom';
 import './Signup.css'
+import uniqarr from "../../utils/uniquearr";
 const Signup = () => {
   const navigate = useNavigate();
   const [password, setPassword] = useState("");
@@ -29,12 +30,12 @@ const Signup = () => {
 
       alert("Please enter your email")
     }
-    else if(interests.length<1){
+    else if(interests.length<2){
       alert("Select atleast 2 interests!")
     }
     else{
       
-      register(name, email, password,interests,profile)
+      register(name, email, password,uniqarr(interests),profile)
     }
   }
   const onRegisterSubmits = (e) => {
@@ -69,50 +70,50 @@ const Signup = () => {
           type="password"
         />
         <div className="interests">
-           <input type="button" className="anime"  onClick={(e)=>{
-             e.preventDefault()
+           <input type="checkbox" className="Anime"  onClick={(e)=>{
+             
              const interest=e.target.className
              console.log(interest)
              setInterests(interests=>[...interests,interest])
            }}/>Anime
-           <input type="button"  className="Movies"  onClick={(e)=>{
-             e.preventDefault()
+           <input type="checkbox"  className="Movies"  onClick={(e)=>{
+             
              const interest=e.target.className
              console.log(interest)
              setInterests(interests=>[...interests,interest])
            }}/>Movies
-           <input type="button" className="Fashion"  onClick={(e)=>{
-             e.preventDefault()
+           <input type="checkbox" className="Fashion"  onClick={(e)=>{
+             
              const interest=e.target.className
              console.log(interest)
              setInterests(interests=>[...interests,interest])
            }}/>Fashion
-           <input type="button" className="Technology"  onClick={(e)=>{
-             e.preventDefault()
+           <input type="checkbox" className="Technology"  onClick={(e)=>{
+             
              const interest=e.target.className
              console.log(interest)
              setInterests(interests=>[...interests,interest])
            }}/>Technology
-           <input type="button" className="Food"  onClick={(e)=>{
-             e.preventDefault()
+           <input type="checkbox" className="Food"  onClick={(e)=>{
+             
              const interest=e.target.className
              console.log(interest)
              setInterests(interests=>[...interests,interest])
            }}/>Food
-           <input type="button" className="Science"  onClick={(e)=>{
-             e.preventDefault()
+           <input type="checkbox" className="Science"  onClick={(e)=>{
+             
              const interest=e.target.className
              console.log(interest)
              setInterests(interests=>[...interests,interest])
            }}/>Science
-           <input type="button" className="Space"  onClick={(e)=>{
-             e.preventDefault()
+           <input type="checkbox" className="Space"  onClick={(e)=>{
+             
              const interest=e.target.className
              console.log(interest)
              setInterests(interests=>[...interests,interest])
            }}/>Space
-           <input type="button" className="Gaming"  onClick={(e)=>{
-             e.preventDefault()
+           <input type="checkbox" className="Gaming"  onClick={(e)=>{
+             
              const interest=e.target.className
              console.log(interest)
              setInterests(interests=>[...interests,interest])
@@ -124,7 +125,8 @@ const Signup = () => {
             type="submit"
             className="ssubmit"
             onClick={(e) => {
-              e.preventDefault();
+              
+
               registers()
               onRegisterSubmits()
               // {

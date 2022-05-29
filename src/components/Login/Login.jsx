@@ -2,10 +2,7 @@ import { logIn } from '../../firebase/firebaseConfig';
 import React from 'react'
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-
 import './Login.css'
-
-
 const Login = () => {
 
   const navigate = useNavigate();
@@ -13,16 +10,16 @@ const Login = () => {
   const [email, setEmail] = useState("");
   const loginUser=()=>{
     logIn(email,password)
-  }
+  } 
 
   const onLoginSubmits=()=>{
    navigate("/homepage")
   }
   return (
  <>
+ <div className="loginForm">
 
     <form action="">
-
     <input
           className="lemail"
           onChange={(e) => {
@@ -51,7 +48,7 @@ const Login = () => {
           />
 
     </form>
-
+    </div>
  </>
   )
 }
