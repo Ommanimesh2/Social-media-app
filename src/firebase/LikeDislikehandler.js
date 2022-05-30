@@ -1,4 +1,4 @@
-import { updateDoc,doc, getDoc, addDoc, getDocs, collectionGroup } from "firebase/firestore"
+import { updateDoc,doc, getDoc, addDoc, getDocs} from "firebase/firestore"
  import {db} from './firebaseConfig'
 import { collection } from "firebase/firestore"
 import { query,where } from "firebase/firestore"
@@ -11,7 +11,7 @@ export async function likeUpdater(id,user,e,setlike,lik){
   }, 2000);
   try{
 
-    const likeExists= query(collectionGroup(db,"likePeople"), where("people","==",user))
+    const likeExists= query(collection(db,`posts/${id}/likePeople`), where("people","==",user))
     const thing=await getDocs(likeExists)
     console.log(thing);
   let arr=[]
@@ -52,7 +52,7 @@ export async function dislikeUpdater(id,user,e,setDislik,dislik){
       
     }, 2000);
     try{
-        const dislikeExists= query(collectionGroup(db,"dislikePeople"), where("people","==",user))
+        const dislikeExists= query(collection(db,`posts/${id}/dislikePeople`), where("people","==",user))
         console.log(dislikeExists);
         const thing=await getDocs(dislikeExists)
       let arr=[]
